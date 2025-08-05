@@ -1,0 +1,236 @@
+# Copyright (C) 2024 Jörn Lund
+# This file is distributed under the GPL3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple Paste 2.1.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/simple-paste\n"
+"Last-Translator: Sadewa <sadewaa.ext@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-12-20T13:28:16+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: simple-paste\n"
+
+#. Plugin Name of the plugin
+#: index.php
+#: include/SimplePaste/Admin/WritingOptions.php:66
+msgid "Simple Paste"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: index.php
+msgid "https://wordpress.org/plugins/simple-paste/"
+msgstr ""
+
+#. Description of the plugin
+#: index.php
+msgid "Paste files and image data from clipboard into the WordPress media library."
+msgstr ""
+
+#. Author of the plugin
+#: index.php
+msgid "Sadewa"
+msgstr ""
+
+#. Author URI of the plugin
+#: index.php
+msgid "https://github.com/sadewaa"
+msgstr ""
+
+#: include/template/image-list.php:10
+msgid "Upload Pasted Images"
+msgstr ""
+
+#: include/template/image-list.php:16
+#: include/template/uploader.php:29
+msgid "Upload"
+msgstr ""
+
+#: include/template/image-list.php:24
+msgid "Filename"
+msgstr ""
+
+#: include/template/image-list.php:25
+#: include/SimplePaste/Admin/AbstractOptions.php:31
+msgid "Pasted"
+msgstr ""
+
+#: include/template/image-list.php:30
+msgid "WebP"
+msgstr ""
+
+#: include/template/image-list.php:34
+msgid "PNG"
+msgstr ""
+
+#: include/template/image-list.php:38
+msgid "jpeg"
+msgstr ""
+
+#: include/template/image-list.php:42
+msgid "SVG"
+msgstr ""
+
+#: include/template/image-list.php:46
+#: include/SimplePaste/Admin/WritingOptions.php:80
+msgid "Image Quality"
+msgstr ""
+
+#: include/template/image-list.php:52
+msgid "Discard"
+msgstr ""
+
+#: include/template/simple-paste-instructions.php:15
+msgid "Press <kbd>⌘</kbd>+<kbd>V</kbd> to paste"
+msgstr ""
+
+#: include/template/simple-paste-instructions.php:17
+msgid "Press <kbd>ctrl</kbd>+<kbd>V</kbd> to paste"
+msgstr ""
+
+#: include/template/uploader.php:13
+msgid "Try again"
+msgstr ""
+
+#: include/template/uploader.php:16
+msgid "Title"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:130
+msgid "Enable Simple Paste in TinyMCE"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:136
+#: include/SimplePaste/Admin/Admin.php:108
+msgid "Prefer pasting files"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:187
+msgid "Available placeholders…"
+msgstr ""
+
+#. translators: 'Media Library' H1 from WP Core
+#: include/SimplePaste/Admin/AbstractOptions.php:194
+msgid "Current post title if available, ‘%s’ otherwise"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:199
+msgid "Display name of current user"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:201
+msgid "Login name of current user"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:203
+msgid "Current user ID"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:208
+msgid "Four-digit year"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:210
+msgid "Two-digit year"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:212
+msgid "Number of month with leading zero (01 to 12)"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:214
+msgid "Day of month with leading zero (01 to 31)"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:216
+msgid "Day of month (1 to 31)"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:218
+msgid "Two digit hour in 24-hour format"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:220
+msgid "Two digit hour in 12-hour format"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:222
+msgid "Two digit minute"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:224
+msgid "Two digit second"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:227
+msgid "Date based on locale"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:229
+msgid "Time based on locale"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:232
+msgid "Unix timestamp"
+msgstr ""
+
+#: include/SimplePaste/Admin/AbstractOptions.php:246
+msgid "Paste some cash with PayPal"
+msgstr ""
+
+#: include/SimplePaste/Admin/Admin.php:38
+#: include/SimplePaste/Admin/Admin.php:107
+msgid "Use Simple Paste"
+msgstr ""
+
+#: include/SimplePaste/Admin/Admin.php:39
+msgid "Paste as file"
+msgstr ""
+
+#: include/SimplePaste/Admin/Admin.php:103
+msgid "Upload pasted images"
+msgstr ""
+
+#: include/SimplePaste/Admin/Admin.php:104
+msgid "Upload image"
+msgstr ""
+
+#: include/SimplePaste/Admin/Admin.php:106
+msgid "Copy & Paste"
+msgstr ""
+
+#: include/SimplePaste/Admin/UserOptions.php:65
+msgid "Simple Paste: Classic Editor"
+msgstr ""
+
+#: include/SimplePaste/Admin/UserOptions.php:74
+msgid "Simple Paste: Image Quality"
+msgstr ""
+
+#: include/SimplePaste/Admin/UserOptions.php:83
+msgid "Simple Paste: Default filename"
+msgstr ""
+
+#: include/SimplePaste/Admin/UserOptions.php:92
+#: include/SimplePaste/Admin/WritingOptions.php:112
+msgid "Support Simple Paste"
+msgstr ""
+
+#: include/SimplePaste/Admin/WritingOptions.php:72
+msgid "Classic Editor"
+msgstr ""
+
+#: include/SimplePaste/Admin/WritingOptions.php:88
+msgid "Default filename"
+msgstr ""
+
+#: include/SimplePaste/Admin/WritingOptions.php:99
+msgid "User profile options"
+msgstr ""
+
+#: include/SimplePaste/Admin/WritingOptions.php:106
+msgid "Allow users to manage their personal pasting options"
+msgstr ""

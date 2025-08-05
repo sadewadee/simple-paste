@@ -1,0 +1,225 @@
+/* WordPress Dashicons Vars */
+/* generated from https://raw.githubusercontent.com/WordPress/dashicons/master/codepoints.json */
+#simple-paste {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: fixed;
+  left: 100%;
+  top: 0;
+  z-index: -1;
+  /*/
+  // Testing mode
+  width: 0;
+  height: 0;
+  position: fixed;
+  left: -9999px;
+  background-color: #fff;
+  border: 1px solid currentColor;
+  box-sizing: border-box;
+  z-index: -1;
+  &:focus,
+  &:focus-within {
+  	left: 30px;
+  	top:30px;
+  	width: 200px;
+  	height: 500px;
+  	outline: 3px solid currentColor;
+  	outline-offset: 3px;
+  	z-index: 9999;
+  }
+  //*/
+}
+
+.simple-paste-instructions body:not(:focus-within) {
+  display: none;
+}
+.media-frame-title .simple-paste-instructions, .media-toolbar .simple-paste-instructions {
+  white-space: nowrap;
+}
+.media-frame-title .simple-paste-instructions:not([hidden]), .media-toolbar .simple-paste-instructions:not([hidden]) {
+  display: inline-block;
+}
+.media-frame-title .simple-paste-instructions .upload-instructions, .media-toolbar .simple-paste-instructions .upload-instructions {
+  display: none;
+}
+.media-modal-content .media-toolbar .simple-paste-instructions {
+  display: none;
+}
+.media-frame-title > .simple-paste-instructions:not([hidden]) {
+  position: absolute;
+  right: 56px;
+  top: 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.simple-paste-image-list {
+  background-color: #f0f0f1;
+  height: 100%;
+}
+.simple-paste-image-list .media-frame-title {
+  left: 0;
+  background-color: #fff;
+}
+.simple-paste-image-list .content {
+  position: absolute;
+  left: 0;
+  top: 50px;
+  bottom: 100px;
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  grid-template-rows: repeat(auto-fit, -webkit-min-content);
+  grid-template-rows: repeat(auto-fit, min-content);
+  grid-gap: 1em;
+  border: 1em solid #f0f0f1;
+  overflow: auto;
+}
+.simple-paste-image-list .media-frame-toolbar {
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 20px;
+  height: 100px;
+  display: flex;
+  align-items: flex-end;
+  box-sizing: border-box;
+  background-color: #fff;
+  text-align: right;
+}
+.simple-paste-image-list .media-frame-toolbar button {
+  margin-left: auto;
+}
+.simple-paste-image-list button[type=button] {
+  line-height: 1.5;
+  padding: 0.5em 1em;
+}
+.simple-paste-image-list button[type=button] span {
+  display: block;
+  margin: auto;
+}
+
+.simple-paste-image-list-item {
+  --toolbar-size: 100px;
+  container-type: inline-size;
+  container-name: SimplePasteItem;
+  display: grid;
+  grid-template-areas: "canvas" "name";
+  grid-template-rows: calc(100% - 2em - var(--toolbar-size)) var(--toolbar-size);
+  grid-gap: 1em 2em;
+  padding: 1em;
+  background-color: #fff;
+  height: 100%;
+  min-height: 450px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.simple-paste-image-list-item canvas {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(45deg, #c3c4c7 25%, transparent 25%), linear-gradient(135deg, #c3c4c7 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #c3c4c7 75%), linear-gradient(135deg, transparent 75%, #c3c4c7 75%);
+  background-size: 25px 25px; /* Must be a square */
+  background-position: 0 0, 12.5px 0, 12.5px -12.5px, 0px 12.5px; /* Must be half of one side of the square */
+}
+.simple-paste-image-list-item canvas, .simple-paste-image-list-item canvas + img {
+  grid-area: canvas;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+@container (width > 700px) {
+  .simple-paste-image-list-item canvas, .simple-paste-image-list-item canvas + img {
+    max-width: calc(100% - 2em);
+  }
+}
+.simple-paste-image-list-item .simple-paste-toolbar {
+  grid-area: name;
+  color: #646970;
+  display: grid;
+  grid-template-columns: -webkit-min-content auto -webkit-min-content;
+  grid-template-columns: min-content auto min-content;
+  grid-template-rows: auto 3em;
+  grid-gap: 1em 3em;
+  margin: 0;
+  height: var(--toolbar-size);
+}
+@container (width > 700px) {
+  .simple-paste-image-list-item .simple-paste-toolbar {
+    margin: 1em;
+  }
+}
+.simple-paste-image-list-item .simple-paste-toolbar .simple-paste-filename {
+  grid-column: 1/span 2;
+}
+.simple-paste-image-list-item .simple-paste-toolbar .simple-paste-format {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1em;
+}
+.simple-paste-image-list-item .simple-paste-toolbar .simple-paste-format label {
+  display: flex;
+  align-items: center;
+}
+.simple-paste-image-list-item .simple-paste-toolbar .simple-paste-quality {
+  display: flex;
+  grid-gap: 1em;
+  grid-gap: 1em;
+  align-items: center;
+}
+.simple-paste-image-list-item .simple-paste-toolbar .simple-paste-quality :first-child {
+  width: -webkit-max-content;
+  width: max-content;
+  margin-left: auto;
+}
+.simple-paste-image-list-item .simple-paste-toolbar .simple-paste-quality [type=range] {
+  flex: 1 1 auto;
+  max-width: 300px;
+}
+.simple-paste-image-list-item .simple-paste-toolbar .simple-paste-quality [type=number] {
+  width: 5em;
+}
+.simple-paste-image-list-item .simple-paste-toolbar [name=discard] {
+  grid-column: 3;
+  grid-row: 1/span 2;
+  margin: 18px 0 auto 0;
+}
+.simple-paste-image-list-item .simple-paste-toolbar [name=discard], .simple-paste-image-list-item .simple-paste-toolbar [name=discard]:hover, .simple-paste-image-list-item .simple-paste-toolbar [name=discard]:focus {
+  border-color: currentColor;
+}
+.simple-paste-image-list-item .simple-paste-toolbar [name=discard]:focus {
+  box-shadow: 0 0 0 1px currentColor;
+}
+.simple-paste-image-list-item .simple-paste-toolbar [type=text] {
+  display: block;
+  width: 100%;
+  font-size: 1.3em;
+}
+.simple-paste-image-list-item .simple-paste-format {
+  margin: auto 0;
+}
+
+.wrap.simple-paste-dashboard { max-width: 1200px; padding: 24px; background-color: #0d0d0d; color: #cccccc; }
+.simple-paste-dashboard h1 { font-size: 28px; font-weight: bold; color: white; margin-bottom: 24px; }
+.simple-paste-card { background-color: #1a1a1a; border: 1px solid #404040; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 24px; padding: 24px; }
+.simple-paste-card h2 { font-size: 20px; font-weight: 600; color: white; margin-top: 0; margin-bottom: 16px; border-bottom: 1px solid #ffd700; padding-bottom: 8px; }
+.simple-paste-card label { font-size: 12px; font-weight: 500; color: #999999; text-transform: uppercase; display: block; margin-bottom: 8px; }
+.simple-paste-card .description { font-size: 14px; color: #cccccc; margin-top: 8px; }
+.simple-paste-card input[type="text"], .simple-paste-card select, .simple-paste-card input[type="number"] { background-color: #2d2d2d; color: #cccccc; border: 1px solid #404040; border-radius: 4px; padding: 8px; width: 100%; box-sizing: border-box; }
+.simple-paste-card input[type="text"]:focus, .simple-paste-card select:focus, .simple-paste-card input[type="number"]:focus { border-color: #ffd700; outline: none; }
+.simple-paste-card input[type="range"] { width: calc(100% - 70px); display: inline-block; vertical-align: middle; }
+.simple-paste-card .button-primary { background-color: #ffd700; color: #1a1a1a; border: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+.simple-paste-card .button-secondary { background: none; border: 1px solid #404040; color: #cccccc; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+.switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #2d2d2d; transition: .4s; border-radius: 24px; }
+.slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: #ffd700; }
+input:checked + .slider:before { transform: translateX(20px); }
+.watermark-preview-container { position: relative; width: 200px; height: 150px; background-color: #333; border: 1px solid #555; margin-top: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.watermark-preview-container img.base-image { max-width: 100%; max-height: 100%; opacity: 0.5; }
+.watermark-preview-container img.watermark-overlay { position: absolute; top: 0; left: 0; max-width: 100%; max-height: 100%; object-fit: contain; }
+
+/*# sourceMappingURL=simple-paste.css.map */
