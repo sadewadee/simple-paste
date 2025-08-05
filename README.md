@@ -1,31 +1,25 @@
 # SimplePaste
 
-**Plugin Name:** SimplePaste
-**Version:** 2.1.2
-**Author:** sadewadee
-**Author URI:** https://github.com/sadewadee
-**Requires at least:** 5.0
-**Tested up to:** 6.5
-**Requires PHP:** 7.4
-**License:** GPLv2 or later
-**License URI:** https://www.gnu.org/licenses/gpl-2.0.html
+| Plugin Info      | Details                                                              |
+| ---------------- | -------------------------------------------------------------------- |
+| **Contributors** | [sadewadee](https://github.com/sadewadee)                            |
+| **Tags**         | paste, image, gutenberg, editor, media, optimize, watermark, admin   |
+| **Requires at least** | 5.0                                                                  |
+| **Tested up to** | 6.5                                                                  |
+| **Requires PHP** | 7.4                                                                  |
+| **Stable tag**   | 2.1.2                                                                |
+| **License**      | GPLv2 or later                                                       |
+| **License URI**  | [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html) |
 
 > A powerful plugin to supercharge your WordPress editor, allowing you to paste images, clean up HTML, and much more.
 
 ---
 
-## Overview
+## Description
 
 **SimplePaste** enhances the WordPress editor. It started as a fork of the original "The Paste" plugin and has since evolved into a comprehensive tool for content creators. It modernizes the pasting workflow, enhances core functionality, and ensures compatibility with the latest web standards and WordPress features, including the Gutenberg Block Editor.
 
-Development and updates for this version are managed exclusively through our [GitHub repository](https://github.com/sadewadee/the-paste).
-
-## Installation
-
-1.  Download the latest release from the [GitHub repository](https://github.com/sadewadee/the-paste/releases).
-2.  In your WordPress dashboard, go to **Plugins > Add New**.
-3.  Click **Upload Plugin** and select the `.zip` file you downloaded.
-4.  Activate the plugin.
+Development and updates for this version are managed exclusively through our [GitHub repository](https://github.com/sadewadee/simple-paste).
 
 ## Features
 
@@ -47,6 +41,13 @@ Development and updates for this version are managed exclusively through our [Gi
 *   **Smart URL Pasting:** Automatically converts pasted URLs from supported services (YouTube, Vimeo, Twitter) into their respective `core/embed` blocks.
 *   **Code Pasting:** Automatically detects and converts pasted text that looks like code into a `core/code` block, preserving all formatting and indentation.
 *   **Table Pasting:** Instantly convert tables pasted from spreadsheets or websites into native `core/table` blocks.
+
+## Installation
+
+1.  Download the latest release from the [GitHub Releases page](https://github.com/sadewadee/simple-paste/releases).
+2.  In your WordPress dashboard, go to **Plugins > Add New**.
+3.  Click **Upload Plugin** and select the `.zip` file you downloaded.
+4.  Activate the plugin.
 
 ## Changelog
 
