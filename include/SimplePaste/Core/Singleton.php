@@ -1,11 +1,11 @@
 <?php
 /**
- *	@package ThePaste\Core
+ *	@package SimplePaste\Core
  *	@version 1.0.0
  *	2018-09-22
  */
 
-namespace ThePaste\Core;
+namespace SimplePaste\Core;
 
 abstract class Singleton {
 

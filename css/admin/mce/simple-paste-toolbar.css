@@ -1,6 +1,6 @@
 /* WordPress Dashicons Vars */
 /* generated from https://raw.githubusercontent.com/WordPress/dashicons/master/codepoints.json */
-.mce-i-thepaste::before {
+.mce-i-simplepaste::before {
   content: "\f317"; /* https://developer.wordpress.org/resource/dashicons/ */
   display: inline-block;
   width: 20px;
@@ -16,10 +16,10 @@
   transition: color 0.1s ease-in 0;
 }
 
-.mce-i-thepaste_preferfiles::before {
+.mce-i-simplepaste_preferfiles::before {
   content: "";
-  -webkit-clip-path: url(#the-paste-editor-paste-file);
-          clip-path: url(#the-paste-editor-paste-file);
+  -webkit-clip-path: url(#simple-paste-editor-paste-file);
+          clip-path: url(#simple-paste-editor-paste-file);
   background-color: currentcolor;
   display: inline-block;
   width: 20px;
@@ -31,10 +31,10 @@
   transition: color 0.1s ease-in 0;
 }
 
-.mce-i-thepaste_onoff::before {
+.mce-i-simplepaste_onoff::before {
   content: "";
-  -webkit-clip-path: url(#the-paste-editor-paste-toggle);
-          clip-path: url(#the-paste-editor-paste-toggle);
+  -webkit-clip-path: url(#simple-paste-editor-paste-toggle);
+          clip-path: url(#simple-paste-editor-paste-toggle);
   background-color: currentcolor;
   display: inline-block;
   width: 20px;
@@ -46,8 +46,8 @@
   transition: color 0.1s ease-in 0;
   transform: scaleX(-1);
 }
-.mce-active .mce-i-thepaste_onoff::before {
+.mce-active .mce-i-simplepaste_onoff::before {
   transform: scaleX(1);
   color: #008a20;
 }
-/*# sourceMappingURL=the-paste-toolbar.css.map */
+/*# sourceMappingURL=simple-paste-toolbar.css.map */

@@ -99,7 +99,7 @@
                     } );
 
                     dispatch( 'core/block-editor' ).insertBlocks( tableBlock );
-                    dispatch( 'core/notices' ).createSuccessNotice( __( 'Table pasted successfully.', 'the-paste' ), { type: 'snackbar' } );
+                    dispatch( 'core/notices' ).createSuccessNotice( __( 'Table pasted successfully.', 'simple-paste' ), { type: 'snackbar' } );
                     return; // Stop further processing
                 }
             } );
@@ -116,7 +116,7 @@
                     event.stopPropagation();
                     const embedBlock = createBlock( 'core/embed', { url: text.trim() } );
                     dispatch( 'core/block-editor' ).insertBlocks( embedBlock );
-                    dispatch( 'core/notices' ).createSuccessNotice( __( 'URL successfully embedded.', 'the-paste' ), { type: 'snackbar' } );
+                    dispatch( 'core/notices' ).createSuccessNotice( __( 'URL successfully embedded.', 'simple-paste' ), { type: 'snackbar' } );
                     return; // Stop further processing
                 }
             } );
@@ -130,7 +130,7 @@
                     event.preventDefault();
                     event.stopPropagation();
                     dispatch( 'core/block-editor' ).insertBlocks( rawHandler( { HTML: cleanedHtml } ) );
-                    dispatch( 'core/notices' ).createSuccessNotice( __( 'Pasted content has been cleaned.', 'the-paste' ), { type: 'snackbar' } );
+                    dispatch( 'core/notices' ).createSuccessNotice( __( 'Pasted content has been cleaned.', 'simple-paste' ), { type: 'snackbar' } );
                     return; // Stop further processing
                 }
             } );
@@ -144,7 +144,7 @@
                     event.stopPropagation();
                     const codeBlock = createBlock( 'core/code', { content: text } );
                     dispatch( 'core/block-editor' ).insertBlocks( codeBlock );
-                    dispatch( 'core/notices' ).createSuccessNotice( __( 'Code pasted successfully.', 'the-paste' ), { type: 'snackbar' } );
+                    dispatch( 'core/notices' ).createSuccessNotice( __( 'Code pasted successfully.', 'simple-paste' ), { type: 'snackbar' } );
                 }
             } );
         }
@@ -162,7 +162,7 @@
                         dispatch( 'core/edit-post' ).openGeneralSidebar( 'edit-post/block' );
                     }, 100 );
                 }
-                dispatch( 'core/notices' ).createSuccessNotice( __( 'Image pasted and uploaded successfully.', 'the-paste' ), { type: 'snackbar' } );
+                dispatch( 'core/notices' ).createSuccessNotice( __( 'Image pasted and uploaded successfully.', 'simple-paste' ), { type: 'snackbar' } );
             },
             onError: ( message ) => {
                 dispatch( 'core/notices' ).createErrorNotice( message, { type: 'snackbar' } );
@@ -180,4 +180,4 @@
         }
     } );
 
-} )( window.wp, window.thePasteGutenberg );
+} )( window.wp, window.simplePasteGutenberg );

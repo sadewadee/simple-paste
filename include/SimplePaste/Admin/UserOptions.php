@@ -1,13 +1,13 @@
 <?php
 /**
- *	@package ThePaste\Admin
+ *	@package SimplePaste\Admin
  *	@version 1.0.0
  *	2018-09-22
  */
 
-namespace ThePaste\Admin;
+namespace SimplePaste\Admin;
 
-use ThePaste\Core;
+use SimplePaste\Core;
 
 class UserOptions extends AbstractOptions {
 
@@ -20,7 +20,7 @@ class UserOptions extends AbstractOptions {
 
 		$this->load();
 
-		if ( get_option( 'the_paste_enable_profile' ) && current_user_can( 'upload_files' ) ) {
+		if ( get_option( 'simple_paste_enable_profile' ) && current_user_can( 'upload_files' ) ) {
 			add_action( 'personal_options', [ $this, 'personal_options' ] );
 			add_action( 'personal_options_update', [ $this, 'update_user' ] );
 			add_action( 'edit_user_profile_update', [ $this, 'update_user' ] );
@@ -60,36 +60,36 @@ class UserOptions extends AbstractOptions {
 
 		?>
 
-		<tr class="the-paste-tinymce">
+		<tr class="simple-paste-tinymce">
 			<th scope="row">
-				<?php esc_html_e( 'The Paste: Classic Editor', 'the-paste' ); ?>
+				<?php esc_html_e( 'Simple Paste: Classic Editor', 'simple-paste' ); ?>
 			</th>
 			<td>
 				<?php $this->tinymce_ui(); ?>
 			</td>
 		</tr>
 
-		<tr class="the-paste-quality">
+		<tr class="simple-paste-quality">
 			<th scope="row">
-				<?php esc_html_e( 'The Paste: Image Quality', 'the-paste' ); ?>
+				<?php esc_html_e( 'Simple Paste: Image Quality', 'simple-paste' ); ?>
 			</th>
 			<td>
 				<?php $this->quality_ui(); ?>
 			</td>
 		</tr>
 
-		<tr class="the-paste-default-filename">
+		<tr class="simple-paste-default-filename">
 			<th scope="row">
-				<?php esc_html_e( 'The Paste: Default filename', 'the-paste' ); ?>
+				<?php esc_html_e( 'Simple Paste: Default filename', 'simple-paste' ); ?>
 			</th>
 			<td>
 				<?php $this->filename_ui(); ?>
 			</td>
 		</tr>
 
-		<tr class="the-paste-donate">
+		<tr class="simple-paste-donate">
 			<th scope="row">
-				<?php esc_html_e( 'Support The Paste', 'the-paste' ); ?>
+				<?php esc_html_e( 'Support Simple Paste', 'simple-paste' ); ?>
 			</th>
 			<td>
 				<?php $this->donate_ui(); ?>

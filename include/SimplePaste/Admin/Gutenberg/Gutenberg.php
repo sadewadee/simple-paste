@@ -1,9 +1,9 @@
 <?php
 
-namespace ThePaste\Admin\Gutenberg;
+namespace SimplePaste\Admin\Gutenberg;
 
-use ThePaste\Asset\Asset;
-use ThePaste\Core\Singleton;
+use SimplePaste\Asset\Asset;
+use SimplePaste\Core\Singleton;
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
@@ -28,16 +28,16 @@ class Gutenberg extends Singleton {
      */
     public function enqueue_editor_assets() {
         $settings = [
-            'quickAttributes' => (bool) get_option( 'the_paste_quick_attributes', true ),
-            'htmlCleanup'     => (bool) get_option( 'the_paste_html_cleanup', true ),
-            'smartUrl'        => (bool) get_option( 'the_paste_smart_url', true ),
-            'codePasting'     => (bool) get_option( 'the_paste_code_pasting', true ),
-            'tablePasting'    => (bool) get_option( 'the_paste_table_pasting', true ),
+            'quickAttributes' => (bool) get_option( 'simple_paste_quick_attributes', true ),
+            'htmlCleanup'     => (bool) get_option( 'simple_paste_html_cleanup', true ),
+            'smartUrl'        => (bool) get_option( 'simple_paste_smart_url', true ),
+            'codePasting'     => (bool) get_option( 'simple_paste_code_pasting', true ),
+            'tablePasting'    => (bool) get_option( 'simple_paste_table_pasting', true ),
         ];
 
         Asset::get( 'js/admin/gutenberg-paste.js' )
             ->deps( [ 'wp-blocks', 'wp-data', 'wp-i18n', 'wp-media-utils', 'wp-notices' ] )
-            ->localize( $settings, 'thePasteGutenberg' )
+            ->localize( $settings, 'simplePasteGutenberg' )
             ->enqueue();
     }
 }

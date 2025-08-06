@@ -1,8 +1,8 @@
 <?php
 
-namespace ThePaste\Media;
+namespace SimplePaste\Media;
 
-use ThePaste\Core\Singleton;
+use SimplePaste\Core\Singleton;
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
@@ -27,7 +27,7 @@ class Renamer extends Singleton {
      * @return array The modified file array.
      */
     public function rename_pasted_file( $file ) {
-        $pattern = get_option( 'the_paste_file_renaming_pattern', '{post_title}-{filename}' );
+        $pattern = get_option( 'simple_paste_file_renaming_pattern', '{post_title}-{filename}' );
 
         // If the pattern is empty or default, do nothing.
         if ( empty( $pattern ) ) {

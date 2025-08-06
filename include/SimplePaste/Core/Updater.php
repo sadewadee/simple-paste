@@ -1,6 +1,6 @@
 <?php
 
-namespace ThePaste\Core;
+namespace SimplePaste\Core;
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Updater extends Singleton {
 
-    const GITHUB_API_URL = 'https://api.github.com/repos/sadewadee/the-paste/releases/latest';
-    const TRANSIENT_KEY = 'the_paste_update_check';
+    const GITHUB_API_URL = 'https://api.github.com/repos/sadewadee/simple-paste/releases/latest';
+    const TRANSIENT_KEY = 'simple_paste_update_check';
 
     private $plugin_slug;
 
@@ -45,7 +45,7 @@ class Updater extends Singleton {
 
         if ( version_compare( $release->tag_name, $current_version, '>' ) ) {
             $transient->response[ $this->plugin_slug ] = (object) [
-                'slug'        => 'the-paste',
+                'slug'        => 'simple-paste',
                 'plugin'      => $this->plugin_slug,
                 'new_version' => $release->tag_name,
                 'url'         => $release->html_url,
@@ -65,7 +65,7 @@ class Updater extends Singleton {
      * @return false|object
      */
     public function plugin_info( $result, $action, $args ) {
-        if ( 'plugin_information' !== $action || empty( $args->slug ) || 'the-paste' !== $args->slug ) {
+        if ( 'plugin_information' !== $action || empty( $args->slug ) || 'simple-paste' !== $args->slug ) {
             return $result;
         }
 
@@ -76,15 +76,15 @@ class Updater extends Singleton {
         }
 
         $result = (object) [
-            'name'              => 'The Paste (Fork)',
-            'slug'              => 'the-paste',
+            'name'              => 'Simple Paste',
+            'slug'              => 'simple-paste',
             'version'           => $release->tag_name,
             'author'            => '<a href="https://github.com/sadewadee">sadewadee</a>',
             'requires'          => '5.0',
             'tested'            => '6.5',
             'requires_php'      => '7.4',
             'last_updated'      => $release->published_at,
-            'homepage'          => 'https://github.com/sadewadee/the-paste',
+            'homepage'          => 'https://github.com/sadewadee/simple-paste',
             'download_link'     => $release->zipball_url,
             'sections'          => [
                 'description' => 'A modern fork of the original "The Paste" WordPress plugin, focused on performance, security, and powerful new features for the modern WordPress editor.',

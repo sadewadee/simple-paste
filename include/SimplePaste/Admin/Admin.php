@@ -1,13 +1,13 @@
 <?php
 
-namespace ThePaste\Admin;
+namespace SimplePaste\Admin;
 
-use ThePaste\Asset;
-use ThePaste\Core;
+use SimplePaste\Asset;
+use SimplePaste\Core;
 
 class Admin extends Core\Singleton {
 
-	/** @var TinyMce\TinyMce */
+	/** @var TinyMce */
 	private $mce;
 
 	/** @var Asset\Asset */
@@ -17,10 +17,10 @@ class Admin extends Core\Singleton {
 	private $css;
 
 	/** @var string */
-	private $ajax_action_preferfiles = 'the_paste_tinymce_preferfiles';
+	private $ajax_action_preferfiles = 'simple_paste_tinymce_preferfiles';
 
 	/** @var string */
-	private $ajax_action_onoff = 'the_paste_tinymce_onoff';
+	private $ajax_action_onoff = 'simple_paste_tinymce_onoff';
 
 	/**
 	 *	@inheritdoc
@@ -35,8 +35,8 @@ class Admin extends Core\Singleton {
 		if ( $this->get_options()->tinymce_enabled ) {
 			add_filter( 'tadv_allowed_buttons', function( $tadv_buttons ) {
 
-				$tadv_buttons['thepaste_onoff']       = __( 'Use The Paste', 'the-paste' );
-				$tadv_buttons['thepaste_preferfiles'] = __( 'Paste as file', 'the-paste' );
+				$tadv_buttons['simplepaste_onoff']       = __( 'Use Simple Paste', 'simple-paste' );
+				$tadv_buttons['simplepaste_preferfiles'] = __( 'Paste as file', 'simple-paste' );
 				add_action( 'admin_footer', [ $this, 'print_media_templates' ] );
 
 				return $tadv_buttons;
@@ -58,7 +58,8 @@ class Admin extends Core\Singleton {
 	}
 
 	/**
-	 *	@action wp_ajax_the_paste_tinymce_enable
+	 *	@action wp_ajax_simple_paste_tinymce_onoff
+	 *	@action wp_ajax_simple_paste_tinymce_preferfiles
 	 */
 	public function ajax_tinymce_enable() {
 
@@ -90,22 +91,22 @@ class Admin extends Core\Singleton {
 		$options = (object) $this->get_options();
 		$user    = UserOptions::instance();
 
-		$this->mce = TinyMce\TinyMceThePaste::instance();
+		$this->mce = TinyMce\TinyMce::instance();
 
 		$current_user = wp_get_current_user();
 
-		$this->css = Asset\Asset::get('css/admin/the-paste.css')->register();
+		$this->css = Asset\Asset::get('css/admin/simple-paste.css')->register();
 
-		$this->js = Asset\Asset::get('js/admin/the-paste.js')
+		$this->js = Asset\Asset::get('js/admin/simple-paste.js')
 			->deps( [ 'jquery', 'media-editor' ] )
 			->localize( [
 				'l10n'    => [
-					'upload_pasted_images' => __( 'Upload pasted images', 'the-paste' ),
-					'upload_image'         => __( 'Upload image', 'the-paste' ),
-					'the_paste'            => __( 'The Paste', 'plugin name', 'the-paste' ),
-					'copy_paste'           => __( 'Copy & Paste', 'the-paste' ),
-					'paste_onoff'          => __( 'Use The Paste', 'the-paste' ),
-					'paste_files'          => __( 'Prefer pasting files', 'the-paste' ),
+					'upload_pasted_images' => __( 'Upload pasted images', 'simple-paste' ),
+					'upload_image'         => __( 'Upload image', 'simple-paste' ),
+					'simple_paste'         => __( 'Simple Paste', 'plugin name', 'simple-paste' ),
+					'copy_paste'           => __( 'Copy & Paste', 'simple-paste' ),
+					'paste_onoff'          => __( 'Use Simple Paste', 'simple-paste' ),
+					'paste_files'          => __( 'Prefer pasting files', 'simple-paste' ),
 				],
 				'options' => [
 					'editor'           => [
@@ -152,9 +153,9 @@ class Admin extends Core\Singleton {
 					 *								%x Date based on locale
 					 *								%X Time based on locale
 					 */
-					'default_filename' => apply_filters( 'the_paste_default_filename', $user->default_filename ),
+					'default_filename' => apply_filters( 'simple_paste_default_filename', $user->default_filename ),
 				],
-			], 'thepaste' )
+			], 'simple_paste' )
 			->register();
 	}
 
@@ -162,7 +163,7 @@ class Admin extends Core\Singleton {
 	 *	@return AbstractOptions
 	 */
 	private function get_options() {
-		if ( (bool) get_option( 'the_paste_enable_profile' ) ) {
+		if ( (bool) get_option( 'simple_paste_enable_profile' ) ) {
 			return UserOptions::instance()->options;
 		} else {
 			return WritingOptions::instance()->options;

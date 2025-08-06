@@ -5,7 +5,7 @@ Plugin Name: SimplePaste
 Plugin URI: https://github.com/sadewadee/the-paste
 Description: A powerful plugin to supercharge your WordPress editor, allowing you to paste images, clean up HTML, and much more.
 Author: sadewadee
-Version: 2.1.2
+Version: 2.1.4
 Author URI: https://github.com/sadewadee
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

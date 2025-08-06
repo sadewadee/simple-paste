@@ -1,13 +1,14 @@
 <?php
 /**
- *	@package ThePaste\Core
+ *	@package SimplePaste\Core
  *	@version 1.0.1
  *	2018-09-22
  */
 
-namespace ThePaste\Core;
+namespace SimplePaste\Core;
 
-use ThePaste\Asset;
+use SimplePaste\Asset;
+use SimplePaste\Core\Plugin;
 
 class Core extends Plugin implements CoreInterface {
 

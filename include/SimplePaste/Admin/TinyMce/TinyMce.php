@@ -1,81 +1,49 @@
 <?php
 
-namespace ThePaste\Admin\TinyMce;
+namespace SimplePaste\Admin\TinyMce;
 
-use ThePaste\Asset;
-use ThePaste\Core;
+use SimplePaste\Asset;
+use SimplePaste\Core;
 
-
-abstract class TinyMce extends Core\Singleton {
+class TinyMce extends Core\Singleton {
 
 	/**
 	 *	Module name
 	 *	lowercase string.
-	 *	You *must* override this in a derived class
 	 */
-	protected $module_name = null;
+	protected $module_name = 'simplepaste';
 
 	/**
-	 *	Override to add buttons
-	 *
-	 *	Usage:
-	 *	protected $editor_buttons = [
-	 *		'mce_buttons'	=> [
-	 *			'append_button'	=> false,
-	 *			'insert_button_at_position'	=> 3,
-	 *		],
-	 *		'mce_buttons_2'	=> [
-	 *			'append_button_to_second_row'	=> false,
-	 *		],
-	 *	];
+	 *	Editor buttons
 	 */
-	protected $editor_buttons = [];
+	protected $editor_buttons = [
+		'mce_buttons_2'	=> [
+			'simplepaste_onoff'       => 'pastetext',
+			'simplepaste_preferfiles' => 'simplepaste_onoff',
+		],
+	];
 
 	/**
 	 *	Plugin params
-	 *	An arbitrary array which will be made avaialable in JS
-	 *	under the varname mce_{$module_name}.
-	 *
 	 */
-	protected $plugin_params = false;
+	protected $plugin_params = [];
 
 	/**
 	 *	TinyMCE Settings
 	 */
-	protected $mce_settings = false;
+	protected $mce_settings = [
+		'paste_data_images' => false,
+	];
 
 	/**
 	 *	Load custom css for toolbar.
-	 *	boolean
 	 */
-	protected $toolbar_css = false;
+	protected $toolbar_css = true;
 
 	/**
 	 *	Load custom css for editor.
-	 *	boolean
 	 */
-	protected $editor_css = false;
-
-	/**
-	 *	Asset dir for derived class
-	 *	string path
-	 */
-	private $asset_dir_uri = null;
-
-	/**
-	 *	Asset dir for derived class
-	 *	string path
-	 */
-	private $asset_dir_path = null;
-
-	/**
-	 *	Asset dir for derived class
-	 *	string path
-	 */
-	private $theme = null;
-
-	protected $script_dir = 'js';
-	protected $styles_dir = 'css';
+	protected $editor_css = true;
 
 	private $plugin_js;
 	private $prefix;
@@ -84,23 +52,11 @@ abstract class TinyMce extends Core\Singleton {
 	 * Private constructor
 	 */
 	protected function __construct() {
-
-		if ( is_null( $this->module_name ) ) {
-			throw( new Exception( '`$module_name` must be defined in a derived classes.' ) );
-		}
-
-		$this->plugin_js = Asset\Asset::get( 'js/admin/mce/' . $this->module_name . '-plugin.js' );
-		$this->editor_css = Asset\Asset::get( 'css/admin/mce/' . $this->module_name . '-editor.css' );
-		$this->toolbar_css = Asset\Asset::get( 'css/admin/mce/' . $this->module_name . '-toolbar.css' );
+		$this->plugin_js = Asset\Asset::get( 'js/admin/mce/simple-paste-plugin.js' );
+		$this->editor_css = Asset\Asset::get( 'css/admin/mce/simple-paste-editor.css' );
+		$this->toolbar_css = Asset\Asset::get( 'css/admin/mce/simple-paste-toolbar.css' );
 
 		$this->prefix = str_replace( '-', '_', $this->module_name );
-
-		$parts = array_slice( explode( '\\', get_class( $this ) ), 0, -1 );
-		array_unshift( $parts, 'include' );
-
-		$this->asset_dir_uri = trailingslashit( implode( DIRECTORY_SEPARATOR, $parts ) );
-
-		$this->asset_dir_path = trailingslashit( implode( DIRECTORY_SEPARATOR, $parts ) );
 
 		// add tinymce buttons
 		$this->editor_buttons = wp_parse_args( $this->editor_buttons, [
@@ -110,22 +66,22 @@ abstract class TinyMce extends Core\Singleton {
 
 		foreach ( $this->editor_buttons as $hook => $buttons ) {
 			if ( $buttons !== false ) {
-				add_filter( $hook, [ $this, 'add_buttons' ] ); // prio:
+				add_filter( $hook, [ $this, 'add_buttons' ] );
 			}
 		}
 
 		// add tinymce plugin parameters
-		if ( $this->plugin_params !== false ) {
+		if ( !empty($this->plugin_params) ) {
 			add_action( 'wp_enqueue_editor', [ $this, 'action_enqueue_editor' ] );
 		}
-		if ( $this->mce_settings !== false ) {
+		if ( !empty($this->mce_settings) ) {
 			add_action( 'tiny_mce_before_init', [ $this, 'tiny_mce_before_init' ] );
 		}
 
-		if ( $this->editor_css !== false ) {
+		if ( $this->editor_css ) {
 			add_filter('mce_css', [ $this, 'mce_css' ] );
 		}
-		if ( $this->toolbar_css !== false ) {
+		if ( $this->toolbar_css ) {
 			add_action( "admin_print_scripts", [ $this, 'enqueue_toolbar_css' ] );
 		}
 
@@ -133,7 +89,6 @@ abstract class TinyMce extends Core\Singleton {
 		add_filter( 'mce_external_plugins', [ $this, 'add_plugin' ] );
 
 		parent::__construct();
-
 	}
 
 	/**
@@ -142,7 +97,6 @@ abstract class TinyMce extends Core\Singleton {
 	 *	@filter mce_external_plugins
 	 */
 	public function add_plugin( $plugins_array ) {
-
 		$plugins_array[ $this->prefix ] = $this->plugin_js->url;
 		return $plugins_array;
 	}
@@ -208,7 +162,7 @@ abstract class TinyMce extends Core\Singleton {
 	 *	@return string URL to editor css
 	 */
 	protected function get_mce_css_url() {
-		return $this->editor_css->url;//
+		return $this->editor_css->url;
 	}
 	/**
 	 *	print plugin settings
@@ -235,19 +189,7 @@ abstract class TinyMce extends Core\Singleton {
 	 *	@action admin_footer
 	 */
 	public function mce_localize( $to_load ) {
-		$varname = sprintf( 'mce_%s', $this->prefix );
 		$params = json_encode($this->plugin_params );
-		printf( '<script type="text/javascript"> var %s = %s;</script>', $varname, $params );
+		printf( '<script type="text/javascript"> var %s = %s;</script>', $this->prefix, $params );
 	}
-
-	/**
-	 *	Get asset path for this editor plugin
-	 *
-	 *	@param	string	$asset	Dir part relative to theme root
-	 *	@return path
-	 */
-	protected function getAssetPath( $asset ) {
-		return $this->theme->getAssetPath( $this->asset_dir_path . ltrim( $asset, '/' )  );
-	}
-
 }

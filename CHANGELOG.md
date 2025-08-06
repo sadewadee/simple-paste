@@ -7,6 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.2.1] - 2025-08-06
+
+### Fixed
+
+*   **Fatal Error:** Resolved a "Class not found" error in `Plugin.php` by adding the correct `use` statement for the `Singleton` class.
+*   **Gutenberg ReferenceError:** Corrected a `ReferenceError: thePasteGutenberg is not defined` in the Gutenberg paste script by updating the localization object to `simplePasteGutenberg`.
+*   **TinyMCE ReferenceError:** Fixed a `ReferenceError: simplepaste is not defined` in the TinyMCE plugin by correcting all instances of the localization object to `simple_paste`.
+
+## [2.2.0] - 2025-08-06
+
+### Changed
+
+*   **Template Migration:** Migrated from legacy `the-paste` templates to new `simple-paste` templates to align with the new branding and improve code consistency.
+*   **JavaScript Refactoring:** Updated all JavaScript files to use the new `simple-paste` template names and localization objects, removing outdated references.
+
+## [2.1.5] - 2025-08-06
+
+### Fixed
+
+*   **JavaScript ReferenceError:** Corrected a `ReferenceError: simple_paste is not defined` by ensuring the JavaScript object is localized with the correct name (`simple_paste` instead of `simplepaste`).
+*   **TinyMCE ReferenceError:** Fixed a `ReferenceError: simplepaste is not defined` in the TinyMCE plugin by correcting the localization logic to match the expected variable name.
+
+## [2.1.4] - 2025-08-06
+
+### Fixed
+
+*   **JavaScript Errors:** Resolved critical JavaScript errors by replacing all instances of the old `thepaste` object with `simple_paste` and fixing an initialization issue in the TinyMCE plugin.
+
+## [2.1.3] - 2025-08-06
+
+### Fixed
+
+*   **Fatal Error:** Resolved a "Class not found" error in `Core.php` by adding the correct `use` statement for the `Plugin` class.
+
 ## [2.1.2] - 2025-08-06
 
 ### Fixed

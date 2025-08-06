@@ -1,17 +1,17 @@
 <?php
 /**
- *	@package ThePaste\Admin
+ *	@package SimplePaste\Admin
  *	@version 1.0.0
  *	2018-09-22
  */
 
-namespace ThePaste\Admin;
+namespace SimplePaste\Admin;
 
-use ThePaste\Core;
+use SimplePaste\Core;
 
 abstract class AbstractOptions extends Core\Singleton {
 
-	protected $option_name = 'the_paste';
+	protected $option_name = 'simple_paste';
 
 	/** @var array */
 	protected $defaults = [
@@ -28,7 +28,7 @@ abstract class AbstractOptions extends Core\Singleton {
 	 */
 	protected function __construct() {
 
-		$this->defaults['default_filename'] = __( 'Pasted', 'the-paste' );
+		$this->defaults['default_filename'] = __( 'Pasted', 'simple-paste' );
 
 	}
 
@@ -123,22 +123,22 @@ abstract class AbstractOptions extends Core\Singleton {
 	public function tinymce_ui() {
 
 		?>
-		<p class="the-paste-tinymce-ui"><?php
+		<p class="simple-paste-tinymce-ui"><?php
 		$this->checkbox_ui([
-			'option_name'  => 'the_paste[tinymce_enabled]',
+			'option_name'  => 'simple_paste[tinymce_enabled]',
 			'option_value' => $this->tinymce_enabled,
-			'option_label' => __( 'Enable The Paste in TinyMCE', 'the-paste' ),
+			'option_label' => __( 'Enable Simple Paste in TinyMCE', 'simple-paste' ),
 		]);
 
 		$this->checkbox_ui([
-			'option_name'  => 'the_paste[tinymce]',
+			'option_name'  => 'simple_paste[tinymce]',
 			'option_value' => $this->tinymce,
-			'option_label' => __( 'Prefer pasting files', 'the-paste' ),
+			'option_label' => __( 'Prefer pasting files', 'simple-paste' ),
 		]);
 
 		?></p>
 		<style>
-		.the-paste-tinymce-ui {
+		.simple-paste-tinymce-ui {
 			display: grid;
 			grid-auto-flow: column;
 			grid-auto-columns: max-content;
@@ -156,12 +156,12 @@ abstract class AbstractOptions extends Core\Singleton {
 	 */
 	public function quality_ui() {
 		?>
-		<label class="regular-text the-paste-quality-ui">
-			<input type="range" name="the_paste[image_quality]" min="0" max="100" value="<?php echo absint( $this->image_quality ); ?>" oninput="this.nextElementSibling.value = this.value" />
+		<label class="regular-text simple-paste-quality-ui">
+			<input type="range" name="simple_paste[image_quality]" min="0" max="100" value="<?php echo absint( $this->image_quality ); ?>" oninput="this.nextElementSibling.value = this.value" />
 			<input type="number" value="<?php echo absint( $this->image_quality ); ?>"  oninput="this.previousElementSibling.value = this.value">
 		</label>
 		<style>
-		.the-paste-quality-ui {
+		.simple-paste-quality-ui {
 			display: inline-grid;
 			grid-template-columns: 1fr 80px;
 			grid-gap: 1em;
@@ -177,59 +177,59 @@ abstract class AbstractOptions extends Core\Singleton {
 
 		?>
 		<label>
-			<input type="text" class="regular-text" name="the_paste[default_filename]" value="<?php echo esc_attr( $this->default_filename ); ?>" />
+			<input type="text" class="regular-text" name="simple_paste[default_filename]" value="<?php echo esc_attr( $this->default_filename ); ?>" />
 		</label>
 		<div class="description">
 			<style>
-			#the-paste-placeholders,
-			#the-paste-placeholders:not(:checked) ~ * { display:none; }
+			#simple-paste-placeholders,
+			#simple-paste-placeholders:not(:checked) ~ * { display:none; }
 			</style>
-			<p><label for="the-paste-placeholders"><a><?php esc_html_e( 'Available placeholders…', 'the-paste' ); ?></a></label></p>
-			<input type="checkbox" id="the-paste-placeholders" />
+			<p><label for="simple-paste-placeholders"><a><?php esc_html_e( 'Available placeholders…', 'simple-paste' ); ?></a></label></p>
+			<input type="checkbox" id="simple-paste-placeholders" />
 			<dl>
 				<dt><code>&lt;postname&gt;</code></dt>
 				<dd><?php echo esc_html(
 					sprintf(
 						/* translators: 'Media Library' H1 from WP Core */
-						__( 'Current post title if available, ‘%s’ otherwise', 'the-paste'),
+						__( 'Current post title if available, ‘%s’ otherwise', 'simple-paste'),
 						__( 'Media Library' )
 					)
 				); ?></dd>
 				<dt><code>&lt;username&gt;</code></dt>
-				<dd><?php esc_html_e('Display name of current user', 'the-paste'); ?></dd>
+				<dd><?php esc_html_e('Display name of current user', 'simple-paste'); ?></dd>
 				<dt><code>&lt;userlogin&gt;</code></dt>
-				<dd><?php esc_html_e('Login name of current user', 'the-paste'); ?></dd>
+				<dd><?php esc_html_e('Login name of current user', 'simple-paste'); ?></dd>
 				<dt><code>&lt;userid&gt;</code></dt>
-				<dd><?php esc_html_e('Current user ID', 'the-paste'); ?></dd>
+				<dd><?php esc_html_e('Current user ID', 'simple-paste'); ?></dd>
 			</dl>
 			<p><strong><?php esc_html_e('Date and time placeholders:'); ?></strong></p>
 			<dl>
 				<dt><code>%Y</code></dt>
-				<dd><?php esc_html_e( 'Four-digit year', 'the-paste' ); ?></dd>
+				<dd><?php esc_html_e( 'Four-digit year', 'simple-paste' ); ?></dd>
 				<dt><code>%y</code></dt>
-				<dd><?php esc_html_e( 'Two-digit year', 'the-paste' ); ?></dd>
+				<dd><?php esc_html_e( 'Two-digit year', 'simple-paste' ); ?></dd>
 				<dt><code>%m</code></dt>
-				<dd><?php esc_html_e( 'Number of month with leading zero (01 to 12)', 'the-paste' ); ?></dd>
+				<dd><?php esc_html_e( 'Number of month with leading zero (01 to 12)', 'simple-paste' ); ?></dd>
 				<dt><code>%d</code></dt>
-				<dd><?php esc_html_e( 'Day of month with leading zero (01 to 31)', 'the-paste' ); ?></dd>
+				<dd><?php esc_html_e( 'Day of month with leading zero (01 to 31)', 'simple-paste' ); ?></dd>
 				<dt><code>%e</code></dt>
-				<dd><?php esc_html_e( 'Day of month (1 to 31)', 'the-paste' ); ?></dd>
+				<dd><?php esc_html_e( 'Day of month (1 to 31)', 'simple-paste' ); ?></dd>
 				<dt><code>%H</code></dt>
-				<dd><?php esc_html_e( 'Two digit hour in 24-hour format', 'the-paste' ); ?></dd>
+				<dd><?php esc_html_e( 'Two digit hour in 24-hour format', 'simple-paste' ); ?></dd>
 				<dt><code>%I</code></dt>
-				<dd><?php esc_html_e( 'Two digit hour in 12-hour format', 'the-paste' ); ?></dd>
+				<dd><?php esc_html_e( 'Two digit hour in 12-hour format', 'simple-paste' ); ?></dd>
 				<dt><code>%M</code></dt>
-				<dd><?php esc_html_e( 'Two digit minute', 'the-paste' ); ?></dd>
+				<dd><?php esc_html_e( 'Two digit minute', 'simple-paste' ); ?></dd>
 				<dt><code>%S</code></dt>
-				<dd><?php esc_html_e( 'Two digit second', 'the-paste' ); ?></dd>
+				<dd><?php esc_html_e( 'Two digit second', 'simple-paste' ); ?></dd>
 
 				<dt><code>%x</code></dt>
-				<dd><?php esc_html_e( 'Date based on locale', 'the-paste' ); ?></dd>
+				<dd><?php esc_html_e( 'Date based on locale', 'simple-paste' ); ?></dd>
 				<dt><code>%X</code></dt>
-				<dd><?php esc_html_e( 'Time based on locale', 'the-paste' ); ?></dd>
+				<dd><?php esc_html_e( 'Time based on locale', 'simple-paste' ); ?></dd>
 
 				<dt><code>%s</code></dt>
-				<dd><?php esc_html_e( 'Unix timestamp', 'the-paste' ); ?></dd>
+				<dd><?php esc_html_e( 'Unix timestamp', 'simple-paste' ); ?></dd>
 			</dl>
 		</div>
 		<?php
@@ -243,7 +243,7 @@ abstract class AbstractOptions extends Core\Singleton {
 		<p class="description">
 			<a class="button" href="https://www.paypal.com/donate/?hosted_button_id=F8NKC6TCASUXE" target="_blank" rel="noopener">
 				<span style="line-height: 1.4;" class="dashicons dashicons-heart"></span>
-				<?php esc_html_e( 'Paste some cash with PayPal', 'the-paste' ); ?>
+				<?php esc_html_e( 'Paste some cash with PayPal', 'simple-paste' ); ?>
 			</a>
 		</p>
 		<?php

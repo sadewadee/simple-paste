@@ -1,18 +1,18 @@
 <?php
 /**
- *	@package ThePaste\Admin\Settings
+ *	@package SimplePaste\Admin
  *	@version 1.0.0
  *	2018-09-22
  */
 
-namespace ThePaste\Admin;
+namespace SimplePaste\Admin;
 
 if ( ! defined('ABSPATH') ) {
-	die('FU!');
+	exit; // Exit if accessed directly.
 }
 
-use ThePaste\Asset;
-use ThePaste\Core;
+use SimplePaste\Asset;
+use SimplePaste\Core;
 
 class WritingOptions extends AbstractOptions {
 
@@ -27,11 +27,9 @@ class WritingOptions extends AbstractOptions {
 
 		add_action( 'admin_init', [ $this, 'register_settings' ] );
 
-		add_option( 'the_paste_enable_profile', '1', '', true );
+		add_option( 'simple_paste_enable_profile', '1', '', true );
 
 		$this->load();
-
-		parent::__construct();
 
 	}
 
@@ -61,15 +59,15 @@ class WritingOptions extends AbstractOptions {
 	 */
 	public function register_settings() {
 
-		$settings_section = 'the_paste_writing_settings';
+		$settings_section = 'simple_paste_writing_settings';
 
-		add_settings_section( $settings_section, __( 'The Paste', 'the-paste' ), null, $this->optionset );
+		add_settings_section( $settings_section, __( 'Simple Paste', 'simple-paste' ), null, $this->optionset );
 
 
 		register_setting( $this->optionset, $this->option_name, [ $this, 'sanitize' ] );
 		add_settings_field(
 			$this->option_name,
-			__( 'Classic Editor', 'the-paste' ),
+			__( 'Classic Editor', 'simple-paste' ),
 			[ $this, 'tinymce_ui' ],
 			$this->optionset,
 			$settings_section,
@@ -77,7 +75,7 @@ class WritingOptions extends AbstractOptions {
 		);
 		add_settings_field(
 			$this->option_name.'_quality',
-			__( 'Image Quality', 'the-paste' ),
+			__( 'Image Quality', 'simple-paste' ),
 			[ $this, 'quality_ui' ],
 			$this->optionset,
 			$settings_section,
@@ -85,31 +83,31 @@ class WritingOptions extends AbstractOptions {
 		);
 		add_settings_field(
 			$this->option_name.'_filename',
-			__( 'Default filename', 'the-paste' ),
+			__( 'Default filename', 'simple-paste' ),
 			[ $this, 'filename_ui' ],
 			$this->optionset,
 			$settings_section,
 			[]
 		);
 
-		$option_name      = 'the_paste_enable_profile';
+		$option_name      = 'simple_paste_enable_profile';
 		register_setting( $this->optionset, $option_name, 'boolval' );
 		add_settings_field(
 			$option_name,
-			__( 'User profile options', 'the-paste' ),
+			__( 'User profile options', 'simple-paste' ),
 			[ $this, 'checkbox_ui' ],
 			$this->optionset,
 			$settings_section,
 			[
 				'option_name'        => $option_name,
 				'option_value'       => (bool) get_option( $option_name ),
-				'option_label'       => __( 'Allow users to manage their personal pasting options', 'the-paste' )
+				'option_label'       => __( 'Allow users to manage their personal pasting options', 'simple-paste' )
 			]
 		);
 
 		add_settings_field(
 			$this->option_name.'_donate',
-			__( 'Support The Paste', 'the-paste' ),
+			__( 'Support Simple Paste', 'simple-paste' ),
 			[ $this, 'donate_ui' ],
 			$this->optionset,
 			$settings_section,

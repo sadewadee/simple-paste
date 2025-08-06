@@ -1,13 +1,13 @@
 <?php
 /**
- *	@package ThePaste\Asset
+ *	@package SimplePaste\Asset
  *	@version 1.0.1
  *	2018-09-22
  */
 
-namespace ThePaste\Asset;
+namespace SimplePaste\Asset;
 
-use ThePaste\Core;
+use SimplePaste\Core;
 
 
 /**
@@ -23,7 +23,7 @@ use ThePaste\Core;
  *		->localize( [
  *			'some_option'	=> 'some_value',
  *			'l10n'			=> [
- *				'hello'	=> __('World','the-paste')
+ *				'hello'	=> __('World','simple-paste')
  *			],
  *		], 'l10n_varname' )
  *		->deps( 'jquery' ) // or ->deps( [ 'jquery','wp-backbone' ] )

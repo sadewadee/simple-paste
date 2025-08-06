@@ -7,6 +7,8 @@
 
 namespace SimplePaste\Core;
 
+use SimplePaste\Core\Singleton;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -18,7 +20,7 @@ class Plugin extends Singleton implements ComponentInterface {
 	 *
 	 * @var string
 	 */
-	const VERSION = '2.1.2';
+	const VERSION = '2.2.0';
 
 	/** @var string plugin main file */
 	private $plugin_file;
