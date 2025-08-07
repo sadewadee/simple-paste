@@ -1,7 +1,7 @@
 <?php
 /**
  *	@package SimplePaste\Core
- *	@version 1.0.1
+ * @version 2.2.9
  *	2018-09-22
  */
 

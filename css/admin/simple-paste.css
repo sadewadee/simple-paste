@@ -202,7 +202,13 @@
 }
 
 .wrap.simple-paste-dashboard { max-width: 1200px; padding: 24px; background-color: #0d0d0d; color: #cccccc; }
-.simple-paste-dashboard h1 { font-size: 28px; font-weight: bold; color: white; margin-bottom: 24px; }
+.simple-paste-dashboard h1 { font-size: 28px; font-weight: bold; color: white; margin-bottom: 16px; }
+.simple-paste-dashboard .nav-tab-wrapper { border-bottom: 1px solid #404040; margin-bottom: 24px; }
+.simple-paste-dashboard .nav-tab { background-color: #1a1a1a; color: #cccccc; border: 1px solid #404040; border-bottom: none; margin-left: 0; margin-right: 8px; }
+.simple-paste-dashboard .nav-tab:hover { background-color: #2d2d2d; color: #ffffff; }
+.simple-paste-dashboard .nav-tab-active, .simple-paste-dashboard .nav-tab-active:hover { background-color: #ffd700; color: #1a1a1a; border-color: #ffd700; }
+.simple-paste-dashboard .tab-content { display: none; }
+.simple-paste-dashboard .tab-content.active { display: block; }
 .simple-paste-card { background-color: #1a1a1a; border: 1px solid #404040; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 24px; padding: 24px; }
 .simple-paste-card h2 { font-size: 20px; font-weight: 600; color: white; margin-top: 0; margin-bottom: 16px; border-bottom: 1px solid #ffd700; padding-bottom: 8px; }
 .simple-paste-card label { font-size: 12px; font-weight: 500; color: #999999; text-transform: uppercase; display: block; margin-bottom: 8px; }

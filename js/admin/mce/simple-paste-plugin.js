@@ -80,11 +80,11 @@
                             }
                             get pastedContent() {
                                 return this.isAsync
-                                    ? '<p id="the-pasted-async"></p>'
+                                    ? '<p id="simple-pasted-async"></p>'
                                     : this.files
                                           .map((e, t) => {
                                               const o = URL.createObjectURL(e);
-                                              return '<p><img id="the-pasted-'.concat(e.type, "-").concat(t, '" src="').concat(o, '" alt="').concat(e.name, '" /></p>');
+                                              return '<p><img id="simple-pasted-'.concat(e.type, "-").concat(t, '" src="').concat(o, '" alt="').concat(e.name, '" /></p>');
                                           })
                                           .join("");
                             }
@@ -103,7 +103,7 @@
                                               const i = new URL(document.location),
                                                   r = await o.default.clipboardItemsToHtml(e.clipboardData.items),
                                                   s = document.createElement("div"),
-                                                  a = this.body.querySelector("#the-pasted-async"),
+                                                  a = this.body.querySelector("#simple-pasted-async"),
                                                   l = [];
                                               (s.innerHTML = r), l.push(...Array.from(s.querySelectorAll("img")));
                                               const c = Array.from(s.childNodes).filter((e) => [Node.ELEMENT_NODE, Node.TEXT_NODE].includes(e.nodeType));

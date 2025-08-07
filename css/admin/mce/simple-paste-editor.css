@@ -1,6 +1,6 @@
 /* WordPress Dashicons Vars */
 /* generated from https://raw.githubusercontent.com/WordPress/dashicons/master/codepoints.json */
-progress.the-paste-progress {
+progress.simple-paste-progress {
   --bar-height: 4px;
   --bar-margin: 0px;
   --bar-padding: 0px;
@@ -20,18 +20,18 @@ progress.the-paste-progress {
   outline-offset: 0px;
   border: none;
 }
-progress.the-paste-progress::-webkit-progress-bar {
+progress.simple-paste-progress::-webkit-progress-bar {
   background-color: var(--bar-color);
   height: var(--bar-height);
 }
-progress.the-paste-progress::-webkit-progress-value {
+progress.simple-paste-progress::-webkit-progress-value {
   background-color: var(--bar-background);
   border-radius: var(--bar-border-radius);
   height: var(--bar-height);
 }
-progress.the-paste-progress::-moz-progress-bar {
+progress.simple-paste-progress::-moz-progress-bar {
   background-color: var(--bar-background);
   border-radius: var(--bar-border-radius);
   height: var(--bar-height);
 }
-/*# sourceMappingURL=the-paste-editor.css.map */
+/*# sourceMappingURL=simple-paste-editor.css.map */

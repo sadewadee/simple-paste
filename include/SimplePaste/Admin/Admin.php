@@ -160,13 +160,19 @@ class Admin extends Core\Singleton {
 	}
 
 	/**
-	 *	@return AbstractOptions
+	 *	@return AbstractOptions|object
 	 */
 	private function get_options() {
 		if ( (bool) get_option( 'simple_paste_enable_profile' ) ) {
 			return UserOptions::instance()->options;
 		} else {
-			return WritingOptions::instance()->options;
+			// Use new Settings options instead of WritingOptions
+			return (object) [
+				'tinymce_enabled' => get_option( 'simple_paste_tinymce_enabled', true ),
+				'tinymce' => get_option( 'simple_paste_tinymce', true ),
+				'image_quality' => get_option( 'simple_paste_image_quality', 90 ),
+				'default_filename' => get_option( 'simple_paste_default_filename', 'Pasted' ),
+			];
 		}
 	}
 

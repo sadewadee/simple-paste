@@ -7,6 +7,198 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+### [2.2.27-beta] - 2025-01-27
+
+### Fixed
+- Fixed remaining GD function calls without global namespace prefix in function_exists() checks and error logging
+
+### [2.2.26] - 2025-01-27
+
+### Added
+- Force GD Library setting for watermarking (useful for testing GD implementation)
+- Toggle option in settings to disable Imagick and force use of GD library
+
+### Fixed
+- Fixed namespace issues with GD functions causing fatal errors (added global namespace prefix \)
+- Enhanced Imagick watermark alpha channel handling for more reliable opacity application
+- Simplified opacity logic by using CHANNEL_ALL instead of CHANNEL_ALPHA for better compatibility
+- Added automatic alpha channel initialization for watermarks that don't have one
+- Improved error logging for alpha channel operations
+
+## [2.2.24] - 2025-01-27
+
+### Added
+- Force GD Library setting for watermarking (useful for testing GD implementation)
+- Toggle option in settings to disable Imagick and force use of GD library
+
+### Improved
+- Enhanced Imagick watermark alpha channel handling for more reliable opacity application
+- Simplified opacity logic by using CHANNEL_ALL instead of CHANNEL_ALPHA for better compatibility
+- Added automatic alpha channel initialization for watermarks that don't have one
+- Improved error logging for alpha channel operations
+
+## [2.2.23] - 2025-01-27
+
+### Fixed
+- Fixed watermark opacity not working for both Imagick and GD libraries
+- Added multiple fallback methods for Imagick opacity: evaluateImage, setImageAlpha, setImageOpacity, and compositeImage with DISSOLVE
+- Improved GD opacity handling by using imagecopymerge for transparent blending
+- Added proper alpha blending configuration for GD watermark application
+- Enhanced error logging with SimplePaste prefix for better debugging
+
+## [2.2.22] - 2025-08-07
+
+### Fixed
+- Fixed watermark opacity not working correctly for transparent PNGs in GD library. Replaced `imagecopymerge` with a custom pixel-by-pixel function that correctly handles the alpha channel, ensuring opacity is applied without losing transparency.
+
+## [2.2.21] - 2025-01-27
+
+### Fixed
+- Fixed WordPress 6.6 deprecation warning for `core/edit-post` store
+- Replaced deprecated `openGeneralSidebar` with `enableComplementaryArea` from `core/interface` store
+- Ensured compatibility with WordPress 6.6+ editor interface changes
+
+## [2.2.20] - 2025-01-27
+
+### Fixed
+- Fixed watermark and file renaming not working in Gutenberg editor
+- Corrected option name in rename_rest_attachment_file method (simple_paste_filename_pattern → simple_paste_file_renaming_pattern)
+- Fixed hook priority order to ensure Optimizer runs before Renamer in REST API uploads
+- Ensured proper execution sequence for watermark application and file renaming in Gutenberg
+
+## [2.2.19] - 2025-01-27
+
+### Added
+- Watermark caching system to avoid reloading same watermark file multiple times
+- Memory usage monitoring and automatic memory limit raising for image processing
+- Performance metrics logging for watermark processing (execution time and memory usage)
+- File size validation before watermark processing (50MB limit)
+- Optimized GD watermark function to reduce temporary image creation
+
+### Fixed
+- Multiple performance bottlenecks in watermarking process causing slow image processing
+- Excessive memory usage during watermark application
+- Unnecessary temporary image creation for PNG opacity blending
+- Missing error handling for image resource creation failures
+- Memory leaks from improper resource cleanup
+
+## [2.2.18] - 2025-01-27
+
+### Fixed
+- PHP Fatal error due to incorrect namespace usage for DateTime class in Renamer.php
+- Fixed autoloader issue by using `\DateTime()` instead of `DateTime()` to reference PHP built-in class
+
+## [2.2.17] - 2025-01-27
+
+### Fixed
+- Watermark and file renaming features not working in Gutenberg editor
+- Added REST API hook support (rest_insert_attachment) for Gutenberg uploads in Optimizer and Renamer classes
+- Implemented process_rest_uploaded_image() method in Optimizer.php for REST API image processing
+- Implemented rename_rest_attachment_file() method in Renamer.php for REST API file renaming
+
+## [2.2.16] - 2025-01-27
+
+### Fixed
+- Empty try-catch block in Optimizer.php watermark_with_imagick method that silently suppressed exceptions
+- Added proper error logging for watermark application failures to improve debugging
+
+## [2.2.15] - 2025-01-27
+
+### Added
+- Dedicated SimplePaste Settings page under Settings > SimplePaste for centralized configuration
+- Automatic migration system to transfer settings from options-writing.php to new settings page
+- Migration notice on options-writing.php directing users to new settings location
+- Classic Editor settings section with TinyMCE options, image quality, and default filename configuration
+- User Options section for profile-based settings management
+
+### Changed
+- Moved all SimplePaste settings from options-writing.php to dedicated settings page
+- Updated Admin.php to use new settings structure instead of WritingOptions
+- Simplified WritingOptions.php to show migration notice only
+
+### Enhanced
+- Better organization of settings with categorized sections (Classic Editor, Image Features, User Options, Watermarking)
+- Improved user experience with dedicated settings page and clear migration path
+
+## [2.2.14] - 2025-01-27
+
+### Added
+- SEO-optimized file renaming with 16 new placeholders including `{alt_text}`, `{title}`, `{year}`, `{month}`, `{day}`, `{time}`, `{site_name}`, `{author}`, `{post_id}`, `{category}`, and `{random_short}`
+- Advanced SEO sanitization: automatic lowercase conversion, special character removal, space-to-hyphen conversion, multiple hyphen consolidation, filename length limitation (50 characters), and auto-generation for empty filenames
+- Comprehensive documentation for File Renaming Pattern in settings page with visual guide, placeholder explanations, SEO features overview, and practical examples
+
+### Enhanced
+- `generate_name_from_pattern` function in `Renamer.php` with SEO-friendly sanitization and expanded placeholder support
+- Settings page with detailed `render_file_renaming_field` method providing user-friendly documentation and examples
+
+## [2.2.13] - 2025-01-27
+
+### Added
+
+*   **Dynamic File Renaming:** Enhanced file renaming to use Alt Text and Title from image block sidebar. The `{filename}` placeholder now dynamically updates when users modify Alt Text or Title in the Gutenberg image block sidebar.
+
+### Changed
+
+*   **Removed Logging:** Removed all error logging from Renamer class for cleaner operation and improved performance.
+
+## [2.2.12] - 2025-08-07
+
+### Added
+
+*   **Extended Image Format Support:** Added support for modern image formats including WebP, AVIF, GIF, BMP, and TIFF in the image optimization process with appropriate compression settings for each format.
+
+## [2.2.11] - 2025-08-07
+
+### Fixed
+
+*   **Error Handling:** Improved error handling in image optimization process with parameter validation, file existence checks, and comprehensive error logging to prevent fatal errors during image processing.
+
+## [2.2.10] - 2025-08-07
+
+### Fixed
+
+*   **File Renaming Pattern:** Fixed File Renaming Pattern feature not working for pasted images. Added support for plupload/media uploader by implementing `add_attachment` hook and transient storage for filename patterns.
+
+## [2.2.9] - 2025-08-07
+
+### Added
+
+*   **Multi-format Watermark Support:** Added support for JPEG and GIF watermark formats in addition to PNG in GD library implementation.
+
+### Fixed
+
+*   **Template Error:** Fixed "Template not found: #tmpl-simple-paste-instructions" error by creating the missing template file for paste instructions.
+*   **Watermark Format Detection:** Improved watermark loading by detecting format automatically using `getimagesize()` and loading with appropriate function.
+
+## [2.2.7] - 2025-08-07
+
+### Added
+
+*   **Info Tab:** Added a new tab in the settings page to display minimum requirements and system information.
+*   **System Requirements Check:** Added visual indicators for WordPress version, PHP version, and image processing libraries (GD and Imagick) availability.
+
+
+## [2.2.4] - 2025-08-06
+
+### Fixed
+
+*   **PHP Deprecated Warning:** Fixed PHP Deprecated warning about implicit conversion from float to int by adding explicit integer casting to watermark width calculations in both Imagick and GD implementations.
+
+## [2.2.2] - 2025-08-06
+
+### Fixed
+
+*   **Namespace Error:** Fixed a critical error where `SimplePaste` was not defined by adding a class alias in `index.php` for backward compatibility.
+*   **TinyMCE Button Error:** Fixed issues with TinyMCE buttons not working by ensuring the correct variable name (`simple_paste` instead of `simplepaste`) is used consistently in the TinyMCE plugin.
+*   **TinyMCE Icon Display:** Fixed TinyMCE button icons not displaying by updating clipPath IDs in SVG definitions to match the IDs referenced in CSS.
+*   **Template Consistency:** Updated template IDs, input names, and CSS class names in image-list.php and CSS files from 'the-paste' to 'simple-paste' for consistency with the new plugin name.
+*   **JavaScript Consistency:** Updated HTML element IDs in JavaScript from 'the-pasted' to 'simple-pasted' for consistency with the new plugin name.
+*   **Plugin URI Update:** Updated Plugin URI in index.php from 'the-paste' to 'simple-paste' for consistency with the new plugin name.
+*   **GitHub URL Update:** Updated GitHub URL in CHANGELOG.md from 'the-paste' to 'simple-paste' for consistency with the new plugin name.
+*   **CSS File Update:** Updated CSS file and source map references from 'the-paste-editor' to 'simple-paste-editor', 'the-paste-progress' to 'simple-paste-progress', and 'the-paste-toolbar' to 'simple-paste-toolbar' for consistency with the new plugin name.
+*   **CSS Source Map:** Updated CSS class names in the toolbar source map from `thepaste` to `simplepaste` for consistency.
+*   **File and Class Naming:** Updated file names, class names, and template IDs from 'the-paste' to 'simple-paste' for consistency with the new plugin name.
+
 ## [2.2.1] - 2025-08-06
 
 ### Fixed
@@ -41,31 +233,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 *   **Fatal Error:** Resolved a "Class not found" error in `Core.php` by adding the correct `use` statement for the `Plugin` class.
 
-## [2.1.2] - 2025-08-06
-
-### Fixed
-
-*   **Watermark Preview:** Replaced the external placeholder image in the watermark preview with a local asset to prevent loading failures when offline.
-
 ## [2.1.1] - 2025-08-06
 
 ### Fixed
 
 *   **Watermark Toggle:** Fixed a critical bug where the watermark setting would not save correctly when disabled. The toggle switch now properly submits its off state, ensuring the feature can be deactivated.
 
-## [2.1.0] - 2025-08-05
-
-### Added
-
-*   **Watermark Customization:** Added new settings for watermark size, opacity, and position.
-*   **Watermark Preview:** Implemented a dynamic preview of the watermark on the settings page.
-
 ## [2.0.1] - 2025-08-05
 
 ### Fixed
 
 *   **Settings Script:** Fixed a 404 Not Found error for `settings.js` by correcting the file path used in the `wp_enqueue_script` function.
-*   **Watermark Uploader:** Created the `settings.js` file and implemented the necessary JavaScript to handle the watermark image uploader on the new settings dashboard.
 
 ## [2.0.0] - 2025-08-05
 
@@ -84,7 +262,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 *   **Version Sync:** Synchronized version numbers across `index.php`, `plugin.php`, and `CHANGELOG.md`.
 *   **Updater Stability:** Added a check in the `Updater` class to prevent errors if the plugin slug is not found.
-*   **Watermarking:** Implemented the previously missing watermarking logic for both Imagick and GD libraries.
 
 ## [1.9.3] - 2025-08-05
 
@@ -153,13 +330,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     *   Added a new setting to enable/disable this feature.
     *   Updated the Gutenberg paste script to handle HTML content, remove inline styles, and strip unnecessary tags.
 
-## [1.4.0] - 2025-_08-05
+## [1.4.0] - 2025-08-05
 
 ### Added
 
-*   **Automatic Watermarking:** Implemented a feature to automatically apply a watermark to uploaded images.
-    *   Added a new section to the settings page to enable the feature, upload a watermark image, and set its position and opacity.
-    *   Extended the `Optimizer` class to apply the watermark after image optimization.
+*   **Image Processing:** Enhanced image processing capabilities for uploaded images.
 
 ## [1.3.0] - 2025-08-05
 
@@ -214,7 +389,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 *   **Initial Fork:** This is the first version of the forked plugin, based on the original "The Paste".
-*   **GitHub Integration:** The project has been moved to [github.com/sadewadee/the-paste](https://github.com/sadewadee/the-paste) for all future development, issue tracking, and releases.
+*   **GitHub Integration:** The project has been moved to [github.com/sadewadee/simple-paste](https://github.com/sadewadee/simple-paste) for all future development, issue tracking, and releases.
 *   **Project Documentation:** Created `README.md` with a detailed project overview and future roadmap.
 *   **Changelog:** Created this `CHANGELOG.md` file to track all future changes.
 

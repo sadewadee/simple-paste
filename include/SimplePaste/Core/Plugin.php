@@ -16,11 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Plugin extends Singleton implements ComponentInterface {
 
 	/**
-	 * Plugin Version.
-	 *
-	 * @var string
-	 */
-	const VERSION = '2.2.0';
+     * Plugin Version.
+     *
+     * @var string
+     */
+    const VERSION = '2.2.27-beta';
 
 	/** @var string plugin main file */
 	private $plugin_file;

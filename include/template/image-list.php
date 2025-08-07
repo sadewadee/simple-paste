@@ -5,7 +5,7 @@ if ( ! defined('ABSPATH') ) {
 }
 
 ?>
-<script type="text/html" id="tmpl-the-paste-image-list">
+<script type="text/html" id="tmpl-simple-paste-image-list">
 	<div class="media-frame-title">
 		<h1><?php esc_html_e('Upload Pasted Images','simple-paste'); ?></h1>
 	</div>
@@ -17,35 +17,35 @@ if ( ! defined('ABSPATH') ) {
 		</button>
 	</div>
 </script>
-<script type="text/html" id="tmpl-the-paste-image-list-item">
+<script type="text/html" id="tmpl-simple-paste-image-list-item">
 	<canvas></canvas>
-	<div class="the-paste-toolbar">
-		<label class="the-paste-filename">
+	<div class="simple-paste-toolbar">
+		<label class="simple-paste-filename">
 			<?php esc_html_e( 'Filename', 'simple-paste' );  ?>
-			<input type="text" name="the-paste-filename" value="<?php esc_attr_e( 'Pasted', 'simple-paste' ); ?>" placeholder="" />
+			<input type="text" name="simple-paste-filename" value="<?php esc_attr_e( 'Pasted', 'simple-paste' ); ?>" placeholder="" />
 		</label>
-		<div class="the-paste-format">
+		<div class="simple-paste-format">
 			<label data-format="image/webp">
-				<input type="radio" name="the-paste-format" value="image/webp">
-				<?php _e( 'WebP', 'simple-paste' ); ?>
+				<input type="radio" name="simple-paste-format" value="image/webp">
+				<?php esc_html_e( 'WebP', 'simple-paste' ); ?>
 			</label>
 			<label data-format="image/png">
-				<input type="radio" name="the-paste-format" value="image/png">
-				<?php _e( 'PNG', 'simple-paste' ); ?>
+				<input type="radio" name="simple-paste-format" value="image/png" checked>
+				<?php esc_html_e( 'PNG', 'simple-paste' ); ?>
 			</label>
 			<label data-format="image/jpeg">
-				<input type="radio" name="the-paste-format" value="image/jpeg">
-				<?php _e( 'jpeg', 'simple-paste' ); ?>
+				<input type="radio" name="simple-paste-format" value="image/jpeg">
+				<?php esc_html_e( 'JPEG', 'simple-paste' ); ?>
 			</label>
 			<label data-format="image/svg+xml">
-				<input type="radio" name="the-paste-format" value="image/svg+xml">
-				<?php _e( 'SVG', 'simple-paste' ); ?>
+				<input type="radio" name="simple-paste-format" value="image/svg+xml">
+				<?php esc_html_e( 'SVG', 'simple-paste' ); ?>
 			</label>
 		</div>
-		<label class="the-paste-quality">
+		<label class="simple-paste-quality">
 			<span><?php esc_html_e( 'Image Quality', 'simple-paste' ); ?></span>
 			<input type="range" min="0" max="100" value="{{{ simple_paste.options.jpeg_quality }}}" oninput="this.nextElementSibling.value = this.value" />
-			<input type="number" min="0" max="100" name="the-paste-quality" value="{{{ simple_paste.options.jpeg_quality }}}"  oninput="this.previousElementSibling.value = this.value">
+			<input type="number" min="0" max="100" name="simple-paste-quality" value="{{{ simple_paste.options.jpeg_quality }}}"  oninput="this.previousElementSibling.value = this.value">
 		</label>
 		<button type="button" name="discard" class="button-link-delete button">
 			<span aria-hidden="true" class="dashicons dashicons-trash"></span>

@@ -159,7 +159,8 @@
                 dispatch( 'core/block-editor' ).insertBlocks( imageBlock );
                 if ( settings.quickAttributes ) {
                     setTimeout( () => {
-                        dispatch( 'core/edit-post' ).openGeneralSidebar( 'edit-post/block' );
+                        // Use core/interface store instead of deprecated core/edit-post
+                        dispatch( 'core/interface' ).enableComplementaryArea( 'core/edit-post', 'edit-post/block' );
                     }, 100 );
                 }
                 dispatch( 'core/notices' ).createSuccessNotice( __( 'Image pasted and uploaded successfully.', 'simple-paste' ), { type: 'snackbar' } );

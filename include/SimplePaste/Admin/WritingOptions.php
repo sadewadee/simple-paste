@@ -58,60 +58,35 @@ class WritingOptions extends AbstractOptions {
 	 *	@action admin_init
 	 */
 	public function register_settings() {
+		// Settings have been moved to SimplePaste Settings page
+		// This method is kept for backward compatibility but does nothing
+		
+		// Add a notice to redirect users to the new settings page
+		add_action( 'admin_notices', [ $this, 'show_migration_notice' ] );
+	}
 
-		$settings_section = 'simple_paste_writing_settings';
-
-		add_settings_section( $settings_section, __( 'Simple Paste', 'simple-paste' ), null, $this->optionset );
-
-
-		register_setting( $this->optionset, $this->option_name, [ $this, 'sanitize' ] );
-		add_settings_field(
-			$this->option_name,
-			__( 'Classic Editor', 'simple-paste' ),
-			[ $this, 'tinymce_ui' ],
-			$this->optionset,
-			$settings_section,
-			[]
-		);
-		add_settings_field(
-			$this->option_name.'_quality',
-			__( 'Image Quality', 'simple-paste' ),
-			[ $this, 'quality_ui' ],
-			$this->optionset,
-			$settings_section,
-			[]
-		);
-		add_settings_field(
-			$this->option_name.'_filename',
-			__( 'Default filename', 'simple-paste' ),
-			[ $this, 'filename_ui' ],
-			$this->optionset,
-			$settings_section,
-			[]
-		);
-
-		$option_name      = 'simple_paste_enable_profile';
-		register_setting( $this->optionset, $option_name, 'boolval' );
-		add_settings_field(
-			$option_name,
-			__( 'User profile options', 'simple-paste' ),
-			[ $this, 'checkbox_ui' ],
-			$this->optionset,
-			$settings_section,
-			[
-				'option_name'        => $option_name,
-				'option_value'       => (bool) get_option( $option_name ),
-				'option_label'       => __( 'Allow users to manage their personal pasting options', 'simple-paste' )
-			]
-		);
-
-		add_settings_field(
-			$this->option_name.'_donate',
-			__( 'Support Simple Paste', 'simple-paste' ),
-			[ $this, 'donate_ui' ],
-			$this->optionset,
-			$settings_section,
-			[]
-		);
+	/**
+	 *	Show migration notice on options-writing.php page
+	 *
+	 *	@action admin_notices
+	 */
+	public function show_migration_notice() {
+		$screen = get_current_screen();
+		
+		// Only show on options-writing.php page
+		if ( $screen && $screen->id === 'options-writing' ) {
+			$settings_url = admin_url( 'options-general.php?page=simple-paste-settings' );
+			?>
+			<div class="notice notice-info is-dismissible">
+				<p>
+					<strong><?php esc_html_e( 'SimplePaste Settings Moved!', 'simple-paste' ); ?></strong><br>
+					<?php esc_html_e( 'SimplePaste settings have been moved to a dedicated settings page for better organization.', 'simple-paste' ); ?>
+					<a href="<?php echo esc_url( $settings_url ); ?>" class="button button-primary" style="margin-left: 10px;">
+						<?php esc_html_e( 'Go to SimplePaste Settings', 'simple-paste' ); ?>
+					</a>
+				</p>
+			</div>
+			<?php
+		}
 	}
 }

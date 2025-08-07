@@ -1,4 +1,18 @@
 jQuery(document).ready(function($) {
+    // Tab navigation functionality
+    $('.nav-tab-wrapper a').on('click', function(e) {
+        e.preventDefault();
+        var target = $(this).attr('href');
+        
+        // Update active tab
+        $('.nav-tab-wrapper a').removeClass('nav-tab-active');
+        $(this).addClass('nav-tab-active');
+        
+        // Show target content, hide others
+        $('.tab-content').hide();
+        $(target).show();
+    });
+    
     // Function to update the watermark preview
     function updateWatermarkPreview() {
         var watermarkId = $('input[name="simple_paste_watermark_id"]').val();

@@ -2,10 +2,10 @@
 
 /*
 Plugin Name: SimplePaste
-Plugin URI: https://github.com/sadewadee/the-paste
+Plugin URI: https://github.com/sadewadee/simple-paste
 Description: A powerful plugin to supercharge your WordPress editor, allowing you to paste images, clean up HTML, and much more.
 Author: sadewadee
-Version: 2.1.4
+Version: 2.2.27-beta
 Author URI: https://github.com/sadewadee
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -42,6 +42,9 @@ if ( ! defined('ABSPATH') ) {
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'include/autoload.php';
 
 Core\Core::instance( __FILE__ );
+
+// Add class alias for backward compatibility with 'the paste' plugin
+class_alias('SimplePaste\\Core\\Core', 'SimplePaste');
 
 if ( is_admin() || defined( 'DOING_AJAX' ) ) {
 	add_action( 'init', function() {

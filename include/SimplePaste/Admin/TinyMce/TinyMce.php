@@ -11,7 +11,7 @@ class TinyMce extends Core\Singleton {
 	 *	Module name
 	 *	lowercase string.
 	 */
-	protected $module_name = 'simplepaste';
+	protected $module_name = 'simple-paste';
 
 	/**
 	 *	Editor buttons
@@ -97,7 +97,7 @@ class TinyMce extends Core\Singleton {
 	 *	@filter mce_external_plugins
 	 */
 	public function add_plugin( $plugins_array ) {
-		$plugins_array[ $this->prefix ] = $this->plugin_js->url;
+		$plugins_array[ 'simple_paste' ] = $this->plugin_js->url;
 		return $plugins_array;
 	}
 
@@ -190,6 +190,6 @@ class TinyMce extends Core\Singleton {
 	 */
 	public function mce_localize( $to_load ) {
 		$params = json_encode($this->plugin_params );
-		printf( '<script type="text/javascript"> var %s = %s;</script>', $this->prefix, $params );
+		printf( '<script type="text/javascript"> var %s = %s;</script>', 'simple_paste', $params );
 	}
 }
